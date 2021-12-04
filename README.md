@@ -58,6 +58,10 @@ sudo apt install git
 
 默认启动 8000 端口，在浏览器输入 http://127.0.0.1:8000
 
+5. 如何贡献：
+    - 合约的文档放在 contract 下
+    - 后端的文档放在backend 下
+
 # 文档的托管
 1. 上传github
 2. 网页托管：在 Read the Docs 网站 https://readthedocs.org/ 注册，并绑定 GitHub 账户。点击“Import a Project”导入项目，输入项目名称和仓库地址即可。（注意， 主分支是master, 不是）

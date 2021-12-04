@@ -7,10 +7,19 @@ Welcome to communion-contract-docs's documentation!
 ===================================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: BASIC
+   :maxdepth: 4
+   :caption: comunion contract
 
-   markdown/about
+
+    All about strings <markdown/about>
+    All about mmmm <markdown/about>
+
+
+
+
+
+
+
 
 
 
