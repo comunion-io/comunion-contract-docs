@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>雁门太守行 &mdash; communion-contract-docs 0.1.0 文档</title>
+  <title>如何搭建 solidity 环境 &mdash; communion-contract-docs 0.1.0 文档</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,8 @@
         <script src="../_static/translations.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../genindex.html" />
-    <link rel="search" title="搜索" href="../search.html" /> 
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="Welcome to communion-contract-docs’s documentation!" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,11 +37,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">雁门太守行</a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#"> Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-start">how to start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-created-local-environment">how to created local environment</a></li>
 </ul>
-</div>
+</li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -55,7 +60,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>雁门太守行</li>
+      <li>如何搭建 solidity 环境</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/markdown/about.md.txt" rel="nofollow"> 查看页面源码</a>
       </li>
@@ -65,14 +70,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="id1">
-<h1>雁门太守行<a class="headerlink" href="#id1" title="永久链接至标题"></a></h1>
+  <section id="solidity">
+<h1>如何搭建 solidity 环境<a class="headerlink" href="#solidity" title="永久链接至标题"></a></h1>
+<section id="how-to-start">
+<h2>how to start<a class="headerlink" href="#how-to-start" title="永久链接至标题"></a></h2>
+<ol class="simple">
+<li><p>install truffle</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="n">truffle</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>init project</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">truffle</span> <span class="n">init</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-created-local-environment">
+<h2>how to created local environment<a class="headerlink" href="#how-to-created-local-environment" title="永久链接至标题"></a></h2>
+<ol class="simple">
+<li><p>use npm install remixed tools</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">npm</span> <span class="n">install</span> <span class="o">-</span><span class="n">g</span> <span class="nd">@remix</span><span class="o">-</span><span class="n">project</span><span class="o">/</span><span class="n">remixd</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>open remixed page ( http://remix.ethereum.org)</p></li>
+<li><p>start
+in your source code, run</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">remixed</span> <span class="o">-</span><span class="n">s</span> <span class="p">[</span><span class="n">your</span> <span class="n">source</span> <span class="n">code</span> <span class="nb">list</span><span class="p">]</span> <span class="o">--</span><span class="n">remix</span><span class="o">-</span><span class="n">ide</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">remix</span><span class="o">.</span><span class="n">ethereum</span><span class="o">.</span><span class="n">org</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>open “https://remix.ethereum.org/#optimize=true&amp;runs=200”</p></li>
+<li><p>click home -&gt; file -&gt; connect to local host;</p></li>
+<li><p>after loading, happy coding</p></li>
+<li><p>if you installed ganache, you can use ganache;</p></li>
+</ol>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to communion-contract-docs’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
 
   <hr/>
 
