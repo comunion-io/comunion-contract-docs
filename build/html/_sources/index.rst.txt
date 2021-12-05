@@ -7,10 +7,11 @@ Welcome to communion-contract-docs's documentation!
 ===================================================
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: CONTENTS:
 
-    Getting Started <markdown/about>
+    第一章 开篇 <markdown/lesson1>
+    第二章 环境搭建 <markdown/lesson2>
 
 
 
