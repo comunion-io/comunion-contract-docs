@@ -12,6 +12,7 @@ Welcome to communion-contract-docs's documentation!
 
     第一章 开篇 <markdown/lesson1>
     第二章 环境搭建 <markdown/lesson2>
+    第三章 大话基本概念 <markdown/lesson3>
 
 
 
