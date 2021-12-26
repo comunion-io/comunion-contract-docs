@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solidity 介绍（一） &mdash; communion-contract-docs 0.1.0 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="prev" title="概念理解" href="lesson3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> communion-contract-docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">CONTENTS:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="lesson1.html"> 第一章 开篇</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson2.html"> 第二章 环境搭建</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson3.html"> 第三章 大话基本概念</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"> 第四章 Solidity（一）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#solidity-evm">Solidity  与 EVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">预编译指令</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Solidity 合约</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">注释</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">合约文件引用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">合约的结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">合约的类型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">合约的修改器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">communion-contract-docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Solidity 介绍（一）</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/markdown/lesson4.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="solidity">
+<h1>Solidity 介绍（一）<a class="headerlink" href="#solidity" title="永久链接至标题"></a></h1>
+<p>前面三章，我们介绍了区块链和以太坊等。 本章开始， 我们正式开始学习solidity 语言。</p>
+<section id="solidity-evm">
+<h2>Solidity  与 EVM<a class="headerlink" href="#solidity-evm" title="永久链接至标题"></a></h2>
+<p>Solidity 是针对以太坊虚拟机EVM 的编程语言， 以太坊通过编写智能合约的代码来扩展其功能。EVM 执行智能合约的代码， 智能合约是由Solidity语言编写的。 可是 EVM并不能直接理解solidity, 智能理解字节码。因此， solidity 到 EVM 可以识别的字节码， 需要经过solidity 附带的编译器， 称为sol, 它负责完成转换。</p>
+<p>solidity 是一种非常接近javaScript 的语言， 只支持有限的面向对象的特征， solidity 的文件结构主要由四个部分组成：</p>
+<ol class="simple">
+<li><p>预编译指令</p></li>
+<li><p>注释</p></li>
+<li><p>导入</p></li>
+<li><p>合约</p></li>
+</ol>
+</section>
+<section id="id1">
+<h2>预编译指令<a class="headerlink" href="#id1" title="永久链接至标题"></a></h2>
+<p>预编译指令是sol 文件的第一行， pragma 是告诉编译器， 用哪个编译器版本来编译。 主要原因是因为solidity 作为一门新的语言， 一直在持续的改进中， 每当引入新的特性的时候， 就会推出新版本的编译器</p>
+<div class="highlight-solidity notranslate"><div class="highlight"><pre><span></span>pragma solidity &gt;=0.8.x &lt;0.9.0;
+</pre></div>
+</div>
+<p>虽然编译器的版本指定不是强制的， 但是 pragma 作为第一行是值得鼓励的一种做法。</p>
+<p>在指定版本的过程中， 我们经常会看到 ^ 来指定版本， 例如</p>
+<div class="highlight-solidity notranslate"><div class="highlight"><pre><span></span>pragma solidity ^0.8.x
+</pre></div>
+</div>
+<p>这种做法会导致当编译器版本有新的改动的时候， 可能编译器就会弃用你的代码。从而导致在某一天早上当你上班编译solidity 的时候， 发现跟昨天的结果不一样，从而调试一上午， 才发现是版本问题。</p>
+</section>
+<section id="id2">
+<h2>Solidity 合约<a class="headerlink" href="#id2" title="永久链接至标题"></a></h2>
+<section id="id3">
+<h3>注释<a class="headerlink" href="#id3" title="永久链接至标题"></a></h3>
+<p>solidity 的注释包括单行或者多行， 单行使用双斜线</p>
+<div class="highlight-solidity notranslate"><div class="highlight"><pre><span></span><span class="c1">// 创建staretup</span>
+<span class="kt">function</span><span class="w"> </span><span class="nv">newStartup</span><span class="p">(</span>Profile<span class="w"> </span><span class="kt">memory</span><span class="w"> </span>p<span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>多行使用 /*  */</p>
+<div class="highlight-solidity notranslate"><div class="highlight"><pre><span></span><span class="cm">/* 创建</span>
+<span class="cm">   staretup</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kt">function</span><span class="w"> </span><span class="nv">newStartup</span><span class="p">(</span>Profile<span class="w"> </span><span class="kt">memory</span><span class="w"> </span>p<span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3>合约文件引用<a class="headerlink" href="#id4" title="永久链接至标题"></a></h3>
+<p>合约中， 与其它编程语言一样， 文件间或库的引用。</p>
+<p>文件间的引用一般使用import, 文件路径是完全显示或者隐式的路径，与linux 的文件引入方式完全一致，</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import filename；
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h3>合约的结构<a class="headerlink" href="#id5" title="永久链接至标题"></a></h3>
+<p>合约的常规结构主要包括 函数和变量。以下是一个完整的base 合约,  大家暂时不必关注具体的逻辑</p>
+<div class="highlight-solidity notranslate"><div class="highlight"><pre><span></span>// write by ys 神 from  comunion contract team
+pragma solidity &gt;=0.8.x &lt;0.9.0;
+
+contract Base
+{
+    address internal  _owner;
+    address payable internal  _coinbase;
+
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+    modifier isOwner() {
+        assert(msg.sender == _owner);
+        _;
+    }
+
+    constructor()
+    {
+        _owner = msg.sender;
+    }
+
+    fallback() external virtual payable {
+        revert();
+    }
+
+    receive() external payable {
+        revert();
+    }
+
+    function setCoinBase(address payable cb) internal isOwner {
+        _coinbase = cb;
+    }
+
+    function transferOwnership(address newOwner) public virtual isOwner {
+        require(newOwner != address(0), &quot;Ownable: new owner is the zero address&quot;);
+        _transferOwnership(newOwner);
+    }
+
+    function _transferOwnership(address newOwner) internal virtual {
+        address oldOwner = _owner;
+        _owner = newOwner;
+        emit OwnershipTransferred(oldOwner, newOwner);
+    }
+
+    function suicide0(address payable receiver)
+    public
+    isOwner {
+        selfdestruct(receiver);
+    }
+</pre></div>
+</div>
+<p>合约结构主要有</p>
+<ol class="simple">
+<li><p>编译器声明</p></li>
+<li><p>contract 声明合约</p></li>
+<li><p>状态变量： 合约中的状态变量例如 _owner， 没有在任何函数内声明的变量都是状态变量</p></li>
+<li><p>修改器</p></li>
+<li><p>函数</p></li>
+</ol>
+</section>
+<section id="id6">
+<h3>合约的类型<a class="headerlink" href="#id6" title="永久链接至标题"></a></h3>
+<p>任何语言中都有数据类型， solidity 也不例外， 主要有：</p>
+<ol>
+<li><p>bool</p></li>
+<li><p>uint/int</p></li>
+<li><p>bytes</p></li>
+<li><p>address</p></li>
+<li><p>mapping</p></li>
+<li><p>enum</p></li>
+<li><p>struct</p>
+<p>struct 主要是方便用户实现自定义数据或符合类型数据，但是不包含任何代码， 只包含变量。你想要将不同的数据类型关联到一起， 便可以使用struct, 例如：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">struct</span> <span class="n">Profile</span> <span class="p">{</span>
+        <span class="n">string</span> <span class="nb">id</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+        <span class="n">Mode</span> <span class="n">mode</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">hashtag</span><span class="p">;</span>
+        <span class="nb">bytes</span> <span class="n">logo</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">mission</span><span class="p">;</span>
+        <span class="n">string</span> <span class="n">overview</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>bytes/String</p></li>
+</ol>
+<p>数据类型的主要修饰符有四种</p>
+<ol class="simple">
+<li><p>internal: 被修饰的变量或者函数只能在当前合约或者集成的子类合约中使用</p></li>
+<li><p>private：被修饰的变量或者函数 只能在其声明的合约中使用</p></li>
+<li><p>public ：被修饰的变量或者函数可以公开访问</p></li>
+<li><p>constant：状态变量不可变， 且必须赋初值</p></li>
+</ol>
+</section>
+<section id="id7">
+<h3>合约的修改器<a class="headerlink" href="#id7" title="永久链接至标题"></a></h3>
+<p>在以上的合约中， 我们可以可以看到</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modifier</span> <span class="n">isOwner</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">assert</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">sender</span> <span class="o">==</span> <span class="n">_owner</span><span class="p">);</span>
+        <span class="n">_</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>用modifier修饰的函数， 修改器只与函数关联， 用于改变执行代码的行为。就写我们银行转账，转账前我们需要判断当前账户是否是有效的， 那么就可以使用 moddifier 修饰 转账函数。</p>
+<p>我们看到 修改器修饰的函数中有一个 “_“, 其含义是经过了 assert 的判断之后， 继续执行目标函数的逻辑。</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lesson3.html" class="btn btn-neutral float-left" title="概念理解" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2021, zehui ys.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
